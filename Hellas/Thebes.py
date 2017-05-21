@@ -163,7 +163,7 @@ class Progress(object):
             self._dict.percent = 100 * perc
             self._dict.per_sec = 0 if self._dict.operations < 10 else int(self._dict.operations / (self.dt_last_print - self.dt_start).total_seconds())
             self._dict.ETA = seconds_to_DHMS((elapsed * (1 / perc)) - elapsed)
-        print(self._frmt.format(**self._dict))
+        print((self._frmt.format(**self._dict)))
         if self._dict.operations == self.max_count:
                 self.print_end()
 
@@ -175,15 +175,15 @@ class Progress(object):
 
     def print_header(self):
         if self.head_line:
-            print(chunks_str_frame(self.head_line, self.header_len - 2, center=True))
-        print(self.header)
+            print((chunks_str_frame(self.head_line, self.header_len - 2, center=True)))
+        print((self.header))
 
     def print_end(self, extra_dict=None, override_ended=False):
         if (not self.state == 2) or override_ended:
             self.state = 2
-            print('.' * self.header_len)
+            print(('.' * self.header_len))
             self.print_stats(extra_dict)
-            print('.' * self.header_len)
+            print(('.' * self.header_len))
 
 
     @classmethod

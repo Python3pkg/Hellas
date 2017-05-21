@@ -48,7 +48,7 @@ class Color(object):
         """prints named colors"""
         print("for named colors use :")
         for c in sorted(list(cls.colors.items())):
-            print("{:10} {}".format(*c))
+            print(("{:10} {}".format(*c)))
 
     @classmethod
     def color_code(cls, color):
@@ -65,18 +65,18 @@ class Color(object):
 
     @classmethod
     def color_txt(cls, txt="", color=None):
-        if _IS_PY2 and isinstance(txt, unicode):
+        if _IS_PY2 and isinstance(txt, str):
             txt = txt.encode("utf-8")
         return "{}{}\033[0m".format(cls.color_switch_txt(color), txt)
 
     @classmethod
     def printc(cls, txt, color=colors.red):
         """Print in color."""
-        print(cls.color_txt(txt, color))
+        print((cls.color_txt(txt, color)))
 
     @classmethod
     def color_switch_print(cls, color):
-        print(cls.color_switch_txt(color))
+        print((cls.color_switch_txt(color)))
 
 
 class ColoredFormatter(logging.Formatter):
@@ -253,7 +253,7 @@ def time_func(func):
         result = func(*args, **kwargs)
         secs = time.time() - ts
         ops_ps = kwargs.get('operations', secs) / secs
-        print ("finc{} took: {} {:2.4f} operations/sec={:5.2f}".format(func.__name__, seconds_to_DHMS(secs), secs, ops_ps))
+        print(("finc{} took: {} {:2.4f} operations/sec={:5.2f}".format(func.__name__, seconds_to_DHMS(secs), secs, ops_ps)))
         return result
     return timed
 
@@ -270,12 +270,12 @@ def visualise(seq, sort=lambda x: x[0]):
     """visualises as seq or dictionary"""
     frmt = "{:6} {:8,d} {}"
     if isinstance(seq, dict):
-        seq = seq.items()
+        seq = list(seq.items())
     if sort:
         seq = sorted(seq, key=sort)
     mx, mn = max([i[1] for i in seq]), min([i[1] for i in seq])  
     range = mx - mn
     for i in seq:
         v = int((i[1] * 100) / range)
-        print (frmt.format(i[0], i[1], "*" * v))
+        print((frmt.format(i[0], i[1], "*" * v)))
 

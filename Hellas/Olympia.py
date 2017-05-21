@@ -11,7 +11,7 @@ def pickle_compress(obj, print_compression_info=False):
     p = pickle.dumps(obj)
     c = zlib.compress(p)
     if print_compression_info:
-        print ("len = {:,d} compr={:,d} ratio:{:.6f}".format(len(p), len(c), float(len(c))/len(p)))
+        print(("len = {:,d} compr={:,d} ratio:{:.6f}".format(len(p), len(c), float(len(c))/len(p))))
     return c
 
 

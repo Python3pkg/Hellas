@@ -102,7 +102,7 @@ def dict_encode(in_dict):
     if _IS_PY2:
         out_dict = {}
         for k, v in list(in_dict.items()):
-            if isinstance(v, unicode):
+            if isinstance(v, str):
                 v = v.encode('utf8')
             elif isinstance(v, str):
                 # Must be encoded in UTF-8
@@ -320,14 +320,14 @@ def chunks_str(str, n, separator="\n", fill_blanks_last=True):
 def unicode_available():
     """checks to see if unicode is available  basically distinguishes between python 2.x and 3.x"""
     try:
-        unicode
+        str
         return True
     except NameError:
         return False
 
 
 def unicode_or_str():
-    return unicode if unicode_available() else str
+    return str if unicode_available() else str
 
 
 def class_name_str(obj, skip_parent=False):

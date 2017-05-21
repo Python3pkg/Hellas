@@ -20,7 +20,7 @@ def ngrams(slice_able, n):
 
     .. seealso:: :func:`bigrams`
     """
-    return zip(*[slice_able[i:] for i in range(n)])
+    return list(zip(*[slice_able[i:] for i in range(n)]))
 
 
 def bigrams(slice_able):
@@ -31,7 +31,7 @@ def bigrams(slice_able):
 
      .. seealso:: :func:`ngrams`
     """
-    return zip(slice_able, slice_able[1:])
+    return list(zip(slice_able, slice_able[1:]))
 
 
 def haversine(lon1, lat1, lon2, lat2, earth_radius=6357000):
